@@ -1,0 +1,6 @@
+.user_info {
+    display: none;
+}
+.user_info.show {
+    display: block;
+}
