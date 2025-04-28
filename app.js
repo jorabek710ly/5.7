@@ -7,13 +7,11 @@ BtnEl.innerHTML = offset;
 counterBtnEl.addEventListener("click", () => {
     offset++;
    BtnEl.innerHTML = offset;
-    localStorage.setItem("counter", JSON.stringify(offset));
-})
 
+})
 counterBtnEl.addEventListener("dblclick", () => {
     offset = 0;
     BtnEl.innerHTML = offset;
-    localStorage.setItem("counter", JSON.stringify(offset));
 })
 
 
@@ -39,26 +37,24 @@ const form = document.querySelector('.inputs_form');
 const inputs = form.querySelectorAll('input');
 const tbody = document.querySelector('tbody');
 
-let coun = 0;
+let item = 0;
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const firstName = inputs[0].value.trim();
-  const lastName = inputs[1].value.trim();
+form.addEventListener('submit', function(Event) {
+  const firstName = !inputs.value.trim();
+  const lastName = !inputs.value.trim();
 
   if (firstName && lastName) {
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td>${count}</td>
+      <td>${item++}</td>
       <td>${firstName}</td>
       <td>${lastName}</td>
     `;
     tbody.appendChild(tr);
-    count++;
+    
 
-    inputs[0].value = '';
-    inputs[1].value = '';
+    inputs.value = '';
+    inputs.value = '';
   }
 });
 
