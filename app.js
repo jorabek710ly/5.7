@@ -1,12 +1,11 @@
 const counterBtnEl = document.querySelector(".number_btn");
 const BtnEl = document.querySelector(".number_btn span");
 
-let offset = JSON.parse(localStorage.getItem("counter")) || 0;
-BtnEl.innerHTML = offset;
+
 
 counterBtnEl.addEventListener("click", () => {
     offset++;
-   BtnEl.innerHTML = offset;
+    BtnEl.innerHTML = offset;
 
 })
 counterBtnEl.addEventListener("dblclick", () => {
@@ -33,30 +32,36 @@ SeemoreEl.addEventListener("click", () => {
 
 
 // =====================================================================================
-const form = document.querySelector('.inputs_form');
-const inputs = form.querySelectorAll('input');
-const tbody = document.querySelector('tbody');
 
-let item = 0;
+const Form = document.querySelector((".inputs_form"))
+const input1 = document.querySelector((".input1"))
+const input2 = document.querySelector((".input2"))
+const tbody = document.querySelector((".tbody"))
 
-form.addEventListener('submit', function(Event) {
-  const firstName = !inputs.value.trim();
-  const lastName = !inputs.value.trim();
+let num = 1
+Form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    if (input1.value.trim() === "" || input2.value.trim() === "") {
+        return null;
+    }
+    console.log("ok");
 
-  if (firstName && lastName) {
-    const tr = document.createElement('tr');
+    let tr = document.createElement("tr")
     tr.innerHTML = `
-      <td>${item++}</td>
-      <td>${firstName}</td>
-      <td>${lastName}</td>
-    `;
-    tbody.appendChild(tr);
-    
+      <td>${num++}</td>
+      <td>${input1.value}</td>
+      <td>${input2.value}</td>
+     `
+    tbody.appendChild(tr)
+    console.log(tr);
 
-    inputs.value = '';
-    inputs.value = '';
-  }
-});
+
+    input1.value = ""
+    input2.value = ""
+
+})
+
+
 
 
 //===================================================================
@@ -76,4 +81,58 @@ loginEl.addEventListener("submit", (e) => {
     loginEl.children[0].value = "";
     loginEl.children[1].value = "";
 })
+
+
+// 5-masala
+
+const Start = document.querySelector(".Start")
+const Center = document.querySelector(".Center")
+const End = document.querySelector(".End")
+const thin = document.querySelector(".thin")
+const Bold = document.querySelector(".Bold")
+const Normal = document.querySelector(".Normal")
+const Italic = document.querySelector(".Italic")
+const text = document.querySelector(".text")
+
+Start.addEventListener("click", () => {
+    text.style.fontStyle = "normal";
+
+    text.style.textAlign = "start"
+})
+Center.addEventListener("click", () => {
+    text.style.fontStyle = "normal";
+
+    text.style.textAlign = "center"
+})
+End.addEventListener("click", () => {
+    text.style.fontStyle = "normal";
+
+    text.style.textAlign = "end"
+})
+thin.addEventListener("click", () => {
+    text.style.fontStyle = "normal";
+
+    text.style.fontWeight = "100"
+})
+
+Bold.addEventListener("click", () => {
+    text.style.fontStyle = "normal";
+
+    text.style.fontWeight = "bold"
+
+})
+
+Normal.addEventListener("click", () => {
+    text.style.fontStyle = "normal";
+
+    text.style.fontWeight = "normal"
+})
+
+Italic.addEventListener("click", () => {
+    text.style.fontStyle = "normal";
+    text.style.fontStyle = "italic";
+
+})
+
+
 
